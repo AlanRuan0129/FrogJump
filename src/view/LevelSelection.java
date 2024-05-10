@@ -11,16 +11,35 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * The LevelSelection class implements an interface that allows the user to select the difficulty level of the game.
+ * The interface contains three buttons representing "Easy", "Medium" and "hard" levels.
+ * The user's choice will determine the difficulty level when launching the game.
+ * <p>
+ * This interface also processes the button click event, and opens the level details interface of the corresponding
+ * difficulty according to the user's choice.
+ * </p>
+ *
+ * @author Pengyuan Wei
+ * @version 1.0
+ * @since 2024/3/29
+ */
 public class LevelSelection extends JFrame implements ActionListener {
 
-    JButton easyButton = new JButton("Easy");
-    JButton mediumButton = new JButton("Medium");
-    JButton hardButton = new JButton("Hard");
+    JButton easyButton = new JButton("Easy");//Easy difficulty button
+    JButton mediumButton = new JButton("Medium");//Medium difficulty button
+    JButton hardButton = new JButton("Hard");//Hard difficulty button
 
+    /**
+     * Construct the LevelSelection window and initialize the component.
+     */
     public LevelSelection() {
         initComponents();
     }
 
+    /**
+     * Initializes interface components and configures the layout and behavior of buttons and panels.
+     */
     private void initComponents() {
         setTitle("Level Selection");
         setSize(500, 600);
@@ -84,10 +103,18 @@ public class LevelSelection extends JFrame implements ActionListener {
         setResizable(false);
     }
 
+    /**
+     * Main method, used to launch the interface.
+     * @param args Command line parameter
+     */
     public static void main(String[] args) {
         new LevelSelection().setVisible(true);
     }
 
+    /**
+     * Handle button click events. Click the button to open the LevelDetail interface for the corresponding difficulty level.
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         User user = LocalStorage.get(LocalStorage.CURRENT_USER, User.class);

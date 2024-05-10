@@ -1,16 +1,20 @@
 package view;
 
-import entity.User;
 import model.UserModel;
-import utils.LocalStorage;
-import utils.MusicUtils;
-import view.custom.SettingPanel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ *<h>Old User Login</h>
+ * The class uses for existing users to log into the system
+ *It includes the login button, text fields for user input their username and password
+ * @author Ziwen Ma
+ * @version  1.0
+ * @since 2024-03-25
+ */
 public class OldUserLogin extends JFrame implements ActionListener {
     JButton loginButton = new JButton("Login");
     JButton backButton = new JButton("Main Page");
@@ -19,10 +23,21 @@ public class OldUserLogin extends JFrame implements ActionListener {
     JLabel errorLabel = new JLabel(
             "User name/Password invalid, please try again");
 
+
+    /**
+     * Constructor that initializes the GUI components of the Old User Login page.
+     */
     public OldUserLogin() {
         initComponents();
     }
 
+    /**
+     * Initializes the components of the Old User Login page.
+     * <p>
+     * This includes setting up the layout, creating and arranging GUI elements, and attaching action listeners
+     * to buttons for user interactions.
+     * </p>
+     */
     private void initComponents() {
         setTitle("Old User Login");
         setSize(500, 600);
@@ -47,7 +62,7 @@ public class OldUserLogin extends JFrame implements ActionListener {
         inputPanel.setLayout(new GridLayout(4, 1, 30, 30));
         inputPanel.setBackground(Color.WHITE);
 
-        JLabel nameLabel = new JLabel("Enter a Name:              ");
+        JLabel nameLabel = new JLabel("Enter a Name:             ");
 
         nameField.setPreferredSize(new Dimension(200, 40));
         JLabel passwordLabel = new JLabel("Enter your Password: ");
@@ -108,11 +123,19 @@ public class OldUserLogin extends JFrame implements ActionListener {
         setResizable(false);
     }
 
-    public static void main(String[] args) {
-        OldUserLogin newUserRegister = new OldUserLogin();
-        newUserRegister.setVisible(true);
-    }
-
+    /**
+     * Responds to actions performed on the GUI elements, specifically handling clicks
+     * on the login and HomePage buttons.
+     * <p>
+     * When the login button is clicked, the method attempts to log the user in using the
+     * {@link UserModel#login(String, String)} method, passing the text from the nameField
+     * and the password from the passwordField as arguments. If the login is successful,
+     * it directly opens to the {@code HomePage}. If the login fails due to incorrect information, the errorLabel will be set visible to the screen.
+     * <p>
+     * 'Main Page' button is clicked, the method opens the {@code MainPage}
+     *
+     * @param e the event that triggers the action. source of the event which is used to determine which button was clicked.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == loginButton) {

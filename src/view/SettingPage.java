@@ -10,11 +10,33 @@ import utils.MusicUtils;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * The SettingPage class provides a modal dialog that allows users to modify various Settings.
+ * Switches such as music, sound effects and notifications.
+ * The user's set state is persisted by updating user preferences in local storage and reflected in the application's behavior accordingly.
+ * Each setting is represented by a toggle button that switches on/off when clicked,
+ * The corresponding actions are then triggered, such as starting or stopping music, or enabling/disabling sound effects.
+ * TThe current state of the Settings is loaded from local storage when the dialog is initialized,
+ * Any changes made by the user are saved back to local storage.
+ *
+ * @author Pengyuan Wei
+ * @version 1.0
+ * @since 2024/3/29
+ */
 public class SettingPage extends JDialog {
+
+    /**
+     * Constructor for SettingPage. It initializes the components and layout of the dialog box.
+     */
     public SettingPage() {
         initComponents();
     }
 
+    /**
+     * Initializes and sets the GUI components of the Settings dialog.
+     * It has panels for music, sound effects, and notification Settings, each with a label, an icon,
+     * And a toggle button to switch Settings on and off.
+     */
     private void initComponents() {
         setTitle("Setting Page");
         setSize(500, 600);
@@ -150,6 +172,10 @@ public class SettingPage extends JDialog {
 
     }
 
+    /**
+     * The main method is used to create and display the Settings dialog.
+     * @param args Command line arguments passed to the program (unused).
+     */
     public static void main(String[] args) {
         new SettingPage().setVisible(true);
     }

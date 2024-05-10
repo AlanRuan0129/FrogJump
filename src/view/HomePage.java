@@ -10,14 +10,29 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * HomePage is displayed for the user after logging in. It provides
+ * options to select a level for the game, view game history, or log out.
+ *
+ * Authors: Ziwen Ma
+ * Version: 1.0
+ * Since: Since: 2023-03-21
+ */
 public class HomePage extends JFrame implements ActionListener {
     JButton selectButton = new JButton("Select Level");
     JButton historyButton = new JButton("History View");
     JButton logoutButton = new JButton("Logout");
+
+    /**
+     * Constructor for HomePage. Calls the initComponents method to set up the GUI components.
+     */
     public HomePage() {
         initComponents();
     }
 
+    /**
+     * Initializes the GUI components of the HomePage.
+     */
     private void initComponents() {
         setTitle("Home Page");
         setSize(500, 600);
@@ -81,12 +96,23 @@ public class HomePage extends JFrame implements ActionListener {
         setResizable(false);
     }
 
+    /**
+     * The main method to run the HomePage frame.
+     *
+     * @param args the command line arguments.
+     */
     public static void main(String[] args) {
         HomePage homePage = new HomePage();
         homePage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         homePage.setVisible(true);
     }
 
+    /**
+     * Handles action events triggered by clicking on the buttons.
+     * Depending on which button is clicked, the method will navigate to a different page.
+     *
+     * @param e the ActionEvent triggered by button clicks.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         User user = LocalStorage.get(LocalStorage.CURRENT_USER, User.class);

@@ -13,15 +13,39 @@ import java.awt.*;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * The {@code HistoryPage} class extends {@link JFrame} and is designed to display the history
+ * of player scores and levels in a tabulated format. It showcases the highest and lowest scores
+ * achieved across different difficulty levels and provides a detailed view of each recorded attempt.
+ * <p>
+ * The UI is divided into several panels:
+ * <ul>
+ *     <li>A top panel displaying the highest and lowest scores.</li>
+ *     <li>A central panel containing a table of historical records.</li>
+ *     <li>A bottom panel, which might contain settings or navigation controls (customizable via {@link SettingPanel}).</li>
+ * </ul>
+ * Each record includes details such as the order, difficulty level, game level, score, and time.
+ * </p>
+ * @author Jingpeng Ruan
+ * @version 1.0
+ * @since 2024/3/31
+ */
 public class HistoryPage extends JFrame {
 
     JLabel l1 = new JLabel("Highest: Easy Level 1, 90");
     JLabel l2 = new JLabel("Lowest: Hard Level 3, 40");
     TableModel tableModel = new DefaultTableModel();
+    /**
+     * Constructs a {@code HistoryPage} instance and initializes its UI components.
+     */
     public HistoryPage() {
         initComponents();
     }
 
+    /**
+     * Initializes the components of the {@code HistoryPage}, setting up the layout,
+     * creating UI elements, and populating the data into the table model.
+     */
     private void initComponents() {
         setData();
 
@@ -113,6 +137,11 @@ public class HistoryPage extends JFrame {
     }
 
 
+    /**
+     * Populates the table with data retrieved from the {@link RecordModel}, calculating and displaying
+     * the highest and lowest scores alongside their respective levels. It dynamically updates labels
+     * and the table model based on the records fetched.
+     */
     private void setData(){
         int highestScore = 0;
         int highestLevel = 0;

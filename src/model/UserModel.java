@@ -11,6 +11,9 @@ import java.util.List;
 
 /**
  * The UserModel class is used to handle the user data.
+ * @ author rwang828
+ * @ version 1.0
+ * @since 2024 - 03 - 29
  */
 public class UserModel {
     /**
@@ -66,7 +69,7 @@ public class UserModel {
                 return true;
             }
         }
-
         return false;
+ 
     }
 }

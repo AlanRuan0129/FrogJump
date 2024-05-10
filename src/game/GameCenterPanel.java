@@ -14,12 +14,28 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+
+/**
+ * The {@code GameCenterPanel} class represents the central gameplay area in the game.
+ * It is responsible for initializing the game's visual elements, including the frog, leaves,
+ * and background. It also handles mouse clicks to move the frog and determine game logic based
+ * on the leaf clicked.
+ * @ author rwang828
+ * @ version 1.0
+ * @since 2024 - 03 -29
+ */
 public class GameCenterPanel extends JPanel implements MouseListener {
 
     private final GameSystem gameSystem;
     private final Frog frog;
     private final Leaf[] leaves = new Leaf[14];
 
+  
+    /**
+     * Constructs a new {@code GameCenterPanel} instance.
+     * 
+     * @param gameSystem the game system that controls the gameplay.
+     */
     public GameCenterPanel(GameSystem gameSystem) {
         setPreferredSize(new Dimension(800, 600));
         this.gameSystem = gameSystem;
@@ -31,6 +47,13 @@ public class GameCenterPanel extends JPanel implements MouseListener {
         addMouseListener(this);
     }
 
+  
+    /**
+     * Initializes the leaves in the game based on the current level and difficulty settings.
+     * This method positions the leaves in strategic locations across the panel, setting up
+     * the game environment for the player. Each leaf's position and behavior may vary depending
+     * on the game's difficulty level and the current level the player is on.
+     */
     private void initLeaves() {
         int hardLevel = gameSystem.getHardLevel();
         int level = gameSystem.getLevel();
@@ -73,7 +96,16 @@ public class GameCenterPanel extends JPanel implements MouseListener {
 
     }
 
-
+  
+  
+  /**
+   * Paints the component. This method is called by the Swing framework when the component
+   * should render its content. It customizes the painting to include the game's background,
+   * lines, grass, leaves, and the frog.
+   * 
+   * @param g the {@link Graphics} object used for drawing the component. This is provided by
+   *          the Swing framework and represents the component's drawing area.
+   */
     @Override
     public void paint(Graphics g) {
         super.paint(g);
@@ -89,6 +121,12 @@ public class GameCenterPanel extends JPanel implements MouseListener {
     }
 
 
+  
+    /**
+     * Draws the game's background, including the river segments.
+     * 
+     * @param g the {@link Graphics} object used for drawing.
+     */
     private void drawBackground(Graphics g) {
         ImageIcon riverIcon = ImageBufferUtils.getImageIcon(ImageBufferUtils.RIVER);
         Image riverImage = riverIcon.getImage();
@@ -106,12 +144,24 @@ public class GameCenterPanel extends JPanel implements MouseListener {
         g.drawImage(riverImage, 380, 350, 400, 20, null);
     }
 
+  
+    /**
+     * Draws the line separators in the game panel.
+     * 
+     * @param g the {@link Graphics} object used for drawing.
+     */
     private void drawLine(Graphics g) {
         Image lineImage = ImageBufferUtils.getImageIcon(ImageBufferUtils.LINE).getImage();
         g.drawImage(lineImage, 0, 50, 780, 10, null);
         g.drawImage(lineImage, 0, 70, 780, 10, null);
     }
 
+  
+    /**
+     * Draws the grass at the bottom of the game panel.
+     * 
+     * @param g the {@link Graphics} object used for drawing.
+     */
     private void drawGrass(Graphics g) {
         ImageIcon grassIcon = ImageBufferUtils.getImageIcon(ImageBufferUtils.GRASS);
         Image grassImage = grassIcon.getImage();
@@ -122,6 +172,15 @@ public class GameCenterPanel extends JPanel implements MouseListener {
         }
     }
 
+  
+    /**
+     * Handles mouse click events. This method is called by the Swing framework whenever the mouse
+     * is clicked over this component. It is used to determine if a click was made on a leaf and,
+     * if so, attempts to move the frog to that leaf. If the movement is successful and meets the
+     * game's rules, further actions are triggered based on the leaf's state.
+     * 
+     * @param e the {@link MouseEvent} object that contains details about the mouse click event.
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
 
@@ -150,6 +209,13 @@ public class GameCenterPanel extends JPanel implements MouseListener {
         }
     }
 
+  
+    /**
+     * Starts a new thread to monitor the status of a leaf after it has been clicked.
+     * This method is responsible for updating game state based on the leaf's status.
+     * 
+     * @param leaf the {@link Leaf} that has been clicked.
+     */
     private void startLeafThread(Leaf leaf) {
         new Thread(() -> {
             while (leaf.getStatus() == Leaf.Status.UNTOUCHED) {

@@ -12,13 +12,39 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * The {@code CompletePage} class represents a GUI frame displayed upon the completion of a level
+ * in the game. It provides information about the player's achievement, including their score,
+ * and offers options to navigate to other parts of the game, such as the level selection or
+ * the home page.
+ *
+ * This frame includes interactive buttons for navigation, and it plays a sound effect based
+ * on the user's settings for sound.
+ *
+ * @author Yujun Ma
+ * @version 1.0
+ * @since 2024/3/30
+ */
 public class CompletePage extends JFrame implements ActionListener {
     JButton selectButton = new JButton("Level Selection");
     JButton homeButton = new JButton("Home Page");
+
+    /**
+     * Constructs a {@code CompletePage} frame which initializes the UI components based on
+     * the player's score.
+     *
+     * @param score The score obtained by the player in the recently completed level.
+     */
     public CompletePage(int score) {
         initComponents(score);
     }
 
+    /**
+     * Initializes the components of the frame, including setting up the layout, adding
+     * action listeners to buttons, and displaying the player's score.
+     *
+     * @param score The player's score to display.
+     */
     private void initComponents(int score) {
         selectButton.addActionListener(this);
         homeButton.addActionListener(this);
@@ -80,6 +106,13 @@ public class CompletePage extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+    /**
+     * Handles action events triggered by the interactive elements in the frame, such as button clicks.
+     * Depending on the source of the event, it navigates to either the level selection screen or
+     * the home page and optionally plays a sound effect if the user has enabled sound effects.
+     *
+     * @param e The {@link ActionEvent} triggered by interacting with the frame's components.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         User user = LocalStorage.get(LocalStorage.CURRENT_USER, User.class);

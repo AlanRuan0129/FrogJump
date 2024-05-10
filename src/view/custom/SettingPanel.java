@@ -16,22 +16,43 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * The SettingPanel class provides a panel that contains a Settings icon and a back button.
+ * When you click the Settings icon, the Settings dialog box will pop up. The Back button closes
+ * the current window and returns to the appropriate interface based on the user's status.
+ * For example, if the current user is an instructor, return to the instructor page; Otherwise return to the home page.
+ * The background of the panel defaults to white.
+ *
+ * @author Pengyuan Wei
+ * @version 1.0
+ * @since 2024/3/29
+ */
 public class SettingPanel extends JPanel {
 
-    private String backText;
+    private String backText;//Returns the text of the button
 
-    private JLabel label;
+    private JLabel label;//Displays the TAB for the Settings icon
 
+    /**
+     * Default constructor that initializes the component without adding a return button.
+     */
     public SettingPanel() {
         initComponents();
     }
 
+    /**
+     * Constructor with return text, initializes the component and adds a return button with text.
+     * @param backText Returns the text displayed on the button.
+     */
     public SettingPanel(String backText) {
         this.backText = backText;
         initComponents();
         addBackButton();
     }
 
+    /**
+     * Initializes panel components and sets the layout and background.
+     */
     private void initComponents() {
         setLayout(new BorderLayout());
         setBackground(Color.WHITE);
@@ -52,6 +73,9 @@ public class SettingPanel extends JPanel {
 
     }
 
+    /**
+     * Add a back button to the panel, set the behavior of the button: click to return to the corresponding page according to the type of user.
+     */
     private void addBackButton() {
         JPanel homePanel = new JPanel();
         homePanel.setLayout(new BorderLayout(12, 12));
@@ -85,6 +109,9 @@ public class SettingPanel extends JPanel {
         add(homePanel, BorderLayout.EAST);
     }
 
+    /**
+     * Set the left setting icon click on the event listener, click on the pop-up setting dialog box.
+     */
     public void setLeftActionListener() {
         label.addMouseListener(new MouseAdapter() {
             @Override

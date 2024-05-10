@@ -14,6 +14,20 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+/**
+ * The {@code QuestionPage} class extends {@link JDialog} and implements {@link ActionListener}
+ * to provide a UI for presenting questions to the user, accepting answers, and navigating
+ * through questions in a quiz or game context. It displays the current question, a field for
+ * the user to input their answer, and buttons to submit the answer or proceed to the next question.
+ * Feedback on the user's answer is immediately displayed.
+ * <p>
+ * The dialog interacts with the {@link GameSystem} for game logic and scoring, and with
+ * {@link Leaf} entities representing individual question items.
+ * </p>
+ * @author Jingpeng Ruan
+ * @version 1.0
+ * @since 2024/3/31
+ */
 public class QuestionPage extends JDialog implements ActionListener {
     private Leaf leaf;
     private Question question;
@@ -25,6 +39,13 @@ public class QuestionPage extends JDialog implements ActionListener {
     JButton goNextButton = new JButton("→ Go Next");
     JTextField inputField = new JTextField();
 
+    /**
+     * Constructs a {@code QuestionPage} dialog that sets up the UI components,
+     * initializes game logic connections, and prepares the question for presentation.
+     *
+     * @param leaf The {@link Leaf} entity containing the current question and additional metadata.
+     * @param gameSystem The {@link GameSystem} instance managing game state and logic.
+     */
     public QuestionPage(Leaf leaf, GameSystem gameSystem) {
         submitButton.addActionListener(this);
         goNextButton.addActionListener(this);
@@ -151,6 +172,14 @@ public class QuestionPage extends JDialog implements ActionListener {
         });
     }
 
+
+    /**
+     * Handles action events triggered by the dialog's buttons, including submitting an
+     * answer and moving to the next question. It also manages sound playback and updates
+     * the game state based on the user's answer correctness.
+     *
+     * @param e The {@link ActionEvent} object containing details about the event.
+     */
 
     @Override
     public void actionPerformed(ActionEvent e) {

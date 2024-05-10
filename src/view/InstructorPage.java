@@ -1,24 +1,36 @@
 package view;
 
-import entity.User;
-import utils.LocalStorage;
-import utils.MusicUtils;
 import view.custom.CenterLabelInPanel;
-import view.custom.SettingPanel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * The InstructorPage class creates a GUI frame where instructors can interact
+ * with the application. It offers buttons to view all player progress or to log out.
+ * This class extends JFrame and implements the ActionListener interface to handle
+ * button click events.
+ * Authors: Ziwen Ma
+ * Version: 1.0
+ * Since: 2023-03-24
+ */
 public class InstructorPage extends JFrame implements ActionListener {
     JButton viewAllButton = new JButton("View All Player Progress");
     JButton logoutButton = new JButton("Logout");
 
+    /**
+     * Constructor for the InstructorPage. It initializes the GUI components.
+     */
     public InstructorPage() {
         initComponents();
     }
 
+    /**
+     * Initializes the GUI components of the instructor page. It sets up the layout,
+     * the buttons, and their respective action listeners. It also defines the properties of the buttons and panels.
+     */
     private void initComponents() {
         setTitle("Instructor Page");
         setSize(500, 600);
@@ -71,13 +83,22 @@ public class InstructorPage extends JFrame implements ActionListener {
         panel.add(p7);
 
         add(panel, BorderLayout.CENTER);
-        add(new SettingPanel(), BorderLayout.SOUTH);
     }
 
+    /**
+     * The main method to run the InstructorPage frame.
+     *
+     * @param args the command line arguments.
+     */
     public static void main(String[] args) {
         new InstructorPage().setVisible(true);
     }
 
+    /**
+     * Handles action events triggered by the GUI components. Open a new page or logout
+     *
+     * @param e the ActionEvent triggered by interacting by GUI components.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
 

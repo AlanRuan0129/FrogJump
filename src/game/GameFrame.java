@@ -8,8 +8,24 @@ import view.custom.SettingPanel;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * The {@code GameFrame} class extends {@link JFrame} to create the main game window for the application.
+ * It initializes and displays the game's top panel, center panel, and a settings panel. It also handles
+ * the game loop, updating the game's top panel with the current time and score, and checks for the win
+ * condition. If the game is over, it disposes of the game frame and displays the incomplete page along
+ * with saving the game record.
+ *
+ * @author Yujun Ma
+ * @version 1.0
+ * @since 2024/3/30
+ */
 public class GameFrame extends JFrame {
 
+    /**
+     * Constructs a new {@code GameFrame} and initializes the game's UI components and game loop.
+     *
+     * @param gameSystem The {@link GameSystem} object that contains the game's logic and state.
+     */
     public GameFrame(GameSystem gameSystem) {
         GameTopPanel gameTopPanel = new GameTopPanel();
         GameCenterPanel gameCenterPanel = new GameCenterPanel(gameSystem);

@@ -10,14 +10,27 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Level Detail
+ * Level Detail Class provides a user interface that allows users to select different game levels.
+ * This interface shows a set of buttons, each representing a game level. Users can choose the level they want to play,
+ * But only select the highest level they have unlocked so far.
+ * <p>
+ * The interface automatically unlocks levels based on the user's previous game progress.
+ * </p>
+ *
+ * @author Pengyuan Wei
+ * @version 1.0
+ * @since 2024/3/29
  */
 public class LevelDetail extends JFrame {
-    private final int hardLevel;
-    private int level = 1;
+    private final int hardLevel;//Difficulty level
+    private int level = 1;//Currently selected game level
 
-    private JButton[] buttons = new JButton[9];
+    private JButton[] buttons = new JButton[9];//Represents an array of rank selection buttons
 
+    /**
+     * Constructs a new LevelDetail window, initialized according to the specified difficulty level and user progress.
+     * @param hardLevel The user-selected difficulty level of the game.
+     */
     public LevelDetail(int hardLevel) {
         this.hardLevel = hardLevel;
         User user = LocalStorage.get(LocalStorage.CURRENT_USER, User.class);
@@ -33,6 +46,10 @@ public class LevelDetail extends JFrame {
         initComponents();
     }
 
+    /**
+     * Initializes components and lays out the interface.
+     * This method sets the window title, size, properties of individual panels and buttons, and event listeners.
+     */
     private void initComponents() {
         setTitle("Level Detail");
         setSize(500, 600);
@@ -94,6 +111,10 @@ public class LevelDetail extends JFrame {
         setResizable(false);
     }
 
+    /**
+     * Main method entry to create and display the LevelDetail window.
+     * @param args Command line parameter.
+     */
     public static void main(String[] args) {
         new LevelDetail(1).setVisible(true);
     }

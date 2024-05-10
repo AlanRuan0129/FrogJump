@@ -1,9 +1,6 @@
 package view;
 
-import entity.User;
 import utils.LocalStorage;
-import utils.MusicUtils;
-import view.custom.SettingPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,6 +9,9 @@ import java.awt.event.ActionListener;
 
 /**
  * This class is the login page for the instructor. It has a text field for the instructor code and a login button.
+ * Authors: Ziwen Ma
+ * Version: 1.0
+ * Since: Since: 2023-03-24
  */
 public class InstructorLoginPage extends JFrame implements ActionListener {
     JButton loginButton = new JButton("Login");

@@ -1,27 +1,38 @@
 package view;
 
-import entity.User;
-import utils.LocalStorage;
-import utils.MusicUtils;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * This class is the main page of the game. It has three buttons for new player, old player and instructor login.
+ * This class is the main page of the game. It provides the users with three buttons for new player, old player and instructor login.
+ * <b>Note:</b> This class extends JFrame in java Swing library to create and manage the windows and implements ActionListener interfaces for handling GUI component interactions.
+ *
+ * @author Ziwen Ma
+ * @version  1.0
+ * @since 2024-03-23
  */
 public class MainPage extends JFrame implements ActionListener {
     JButton newButton = new JButton("New Player");
     JButton oldButton = new JButton("Old Player");
     JButton instructionButton = new JButton("Instructor Login");
+
+    /**
+     * Constructor for MainPage. It calls the initComponents method to initialize the GUI components
+     */
     public MainPage() {
         initComponents();
     }
 
     /**
-     * This method initializes the components of the main page.
+     *
+     * Initializes the GUI components of the main page.
+     * <p>
+     * It sets up the frame, panels, and buttons, and configures their properties such as size, color, and action listeners.
+     * for example : JButton: The button component that performs user actions
+     * JPanel: Panel component for input panel, title panel which help us easy to edit and set for more clearly style
+     * </p>
      */
     private void initComponents() {
         setTitle("Main Page");
@@ -89,7 +100,7 @@ public class MainPage extends JFrame implements ActionListener {
 
     /**
      * This method is called when the user clicks on the buttons.
-     * @param e the action event
+     * @param e the action event for the button click checking
      */
     @Override
     public void actionPerformed(ActionEvent e) {

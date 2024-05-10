@@ -14,12 +14,29 @@ import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.util.List;
 
+
+/**
+ * The InstructorProgressPage class displays a GUI frame for instructors to view
+ * the progress of all players with a table details including username, level, highest level achieved, and their highest score.
+ * This class extends JFrame and JTable to display user data.
+ * Authors: Ziwen Ma
+ * Version: 1.0
+ * Since: 2023-03-26
+ */
 public class InstructorProgressPage extends JFrame {
     TableModel tableModel = new DefaultTableModel();
+
+    /**
+     * Constructor for the InstructorProgressPage. It calls the initComponents method to set up the GUI components.
+     */
     public InstructorProgressPage() {
         initComponents();
     }
 
+    /**
+     * Initializes the GUI components of the InstructorProgressPage.
+     * Using the JTable for displaying user data, and laying out the panels.
+     */
     private void initComponents() {
         setData();
         setTitle("Instructor Progress Page");
@@ -71,6 +88,11 @@ public class InstructorProgressPage extends JFrame {
 
     }
 
+
+    /**
+     * Fetches data from local storage, processes it, and sets it on the table model.
+     * finds the highest score across all levels for that user. Display the most engaged level for each user
+     */
     private void setData(){
         DataObject dataObject = LocalStorage.get(LocalStorage.DATA, DataObject.class);
         List<User> users = dataObject.getUsers();
