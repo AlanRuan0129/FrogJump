@@ -37,8 +37,8 @@ Before you can run or build the Frog Jump game, ensure that you have the followi
         - Download: [JUnit 5.8.1](https://junit.org/junit5/)
 
 ## Building from Source
-1. Clone the repository: `git clone https://repo.csd.uwo.ca/scm/compsci2212_w2024/group80.git`
-2. Navigate to the project directory: `cd group80`
+1. Clone the repository: `https://github.com/AlanRuan0129/FrogJump.git`
+2. Navigate to the project directory: `cd src`
 3. Run the Starter.java file which serves as the entry point of the application.
 
 ## Running Pre-compiled Software
